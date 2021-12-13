@@ -1,6 +1,15 @@
-[0m[[0m[0mdebug[0m] [0m[0m[zinc] IncrementalCompile -----------[0m
-[0m[[0m[0mdebug[0m] [0m[0mIncrementalCompile.incrementalCompile[0m
-[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 2 products, 1 sources, 5 libraries[0m
-[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/src/test/scala/TopTester.scala)[0m
-[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(), unmodified = ...),Set(),Set(),API Changes: Set())[0m
-[0m[[0m[0mdebug[0m] [0m[0mNo changes[0m
+[debug] [zinc] IncrementalCompile -----------
+[debug] IncrementalCompile.incrementalCompile
+[debug] previous = Stamps for: 2 products, 1 sources, 5 libraries
+[debug] current source = Set(${BASE}/src/test/scala/TopTester.scala)
+[debug] > initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(), unmodified = ...),Set(),Set(),API Changes: Set(NamesChange(Top,ModifiedNames(changes = UsedName(nice2,[Default]), UsedName(fuck,[Default]), UsedName(WIDTH,[Default]), UsedName(horCntr,[Default]), UsedName(BS,[Default]), UsedName(io,[Default]), UsedName(FPS,[Default]), UsedName(nice,[Default]), UsedName(horCounter,[Default]), UsedName(verCounter,[Default]), UsedName(verCntr,[Default]), UsedName(HEIGHT,[Default])))))
+[debug] The Top has the following regular definitions changed:
+[debug] 	UsedName(nice2,[Default]), UsedName(fuck,[Default]), UsedName(WIDTH,[Default]), UsedName(horCntr,[Default]), UsedName(BS,[Default]), UsedName(io,[Default]), UsedName(FPS,[Default]), UsedName(nice,[Default]), UsedName(horCounter,[Default]), UsedName(verCounter,[Default]), UsedName(verCntr,[Default]), UsedName(HEIGHT,[Default]).
+[debug] All member reference dependencies will be considered within this context.
+[debug] Files invalidated by inheriting from (external) Top: Set()
+[debug] Now invalidating by inheritance (internally).
+[debug] Getting direct dependencies of all classes transitively invalidated by inheritance.
+[debug] Getting classes that directly depend on (external) Top.
+[debug] None of the modified names appears in source file of TopTester. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of ProcessorSpec. This dependency is not being considered for invalidation.
+[debug] No changes

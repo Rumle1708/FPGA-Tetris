@@ -1,5 +1,26 @@
 [
   {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~Top|Top>io_B",
+    "sources":[
+      "~Top|Top>io_Bin"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~Top|Top>io_G",
+    "sources":[
+      "~Top|Top>io_Gin"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~Top|Top>io_R",
+    "sources":[
+      "~Top|Top>io_Rin"
+    ]
+  },
+  {
     "class":"firrtl.EmitCircuitAnnotation",
     "emitter":"firrtl.VerilogEmitter"
   },
