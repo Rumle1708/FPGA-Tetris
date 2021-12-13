@@ -1,0 +1,27 @@
+[debug] > Exec(test, None, None)
+[debug] Evaluating tasks: Test / test
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 1 Scala source to C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\target\scala-2.12\test-classes ...
+[error] C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\src\test\scala\TopTester.scala:3:16: object iotesters is not a member of package chisel3
+[error] import chisel3.iotesters.Driver
+[error]                ^
+[error] C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\src\test\scala\TopTester.scala:4:16: object iotesters is not a member of package chisel3
+[error] import chisel3.iotesters.PeekPokeTester
+[error]                ^
+[error] C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\src\test\scala\TopTester.scala:8:35: not found: type PeekPokeTester
+[error] class TopTester(dut: Top) extends PeekPokeTester(dut){
+[error]                                   ^
+[error] C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\src\test\scala\TopTester.scala:8:50: no arguments allowed for nullary constructor Object: ()Object
+[error] class TopTester(dut: Top) extends PeekPokeTester(dut){
+[error]                                                  ^
+[error] C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\src\test\scala\TopTester.scala:11:3: not found: value step
+[error]   step(800*32)
+[error]   ^
+[error] C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\src\test\scala\TopTester.scala:16:83: chisel3.ChiselExecutionResult does not take parameters
+[error]     Driver.execute(Array[String]("--generate-vcd-output", "on"), () => new Top()) {
+[error]                                                                                   ^
+[error] 6 errors found
+[debug] Forcing garbage collection...
+[error] (Test / compileIncremental) Compilation failed
+[error] Total time: 3 s, completed 13 Dec 2021, 20.39.15
+[debug] > Exec(idea-shell, None, None)

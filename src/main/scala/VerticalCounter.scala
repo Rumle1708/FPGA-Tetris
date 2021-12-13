@@ -10,7 +10,7 @@ import chisel3._
 class VerticalCounter extends Module{
   val io = IO(new Bundle{
     val enVCnt = Input(Bool())
-    val verCnt = Output(UInt(16.W))
+    val verCnt = Output(UInt(10.W))
     val verSync, dispTime = Output(Bool())
   })
   // Constants
@@ -19,7 +19,7 @@ class VerticalCounter extends Module{
   def SYNC_PULSE = 2
   def BACK_PORCH = 33
 
-  val cntReg = RegInit(0.U(16.W))
+  val cntReg = RegInit(0.U(10.W))
   val outputReg1 = RegInit(1.U(1.W))
   val outputReg2 = RegInit(1.U(1.W))
 

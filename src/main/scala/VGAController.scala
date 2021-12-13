@@ -5,15 +5,16 @@ class VGAController extends Module{
     val Rin, Gin, Bin = Input(UInt(4.W))
     val hSync, vSync = Output(Bool())
     val R, G, B = Output(UInt(4.W))
+    val horCntr, verCntr = Output(UInt(10.W))
   })
   val FREQ = 100000000
 
-  val clkdiv = Module(new ClockDivider(25000000, FREQ)) // 25MHz clock
+  val clkDiv = Module(new ClockDivider(25000000, FREQ)) // 25MHz clock
   val horCntr = Module(new HorizontalCounter) // Horizontal
   val verCntr = Module(new VerticalCounter) // Vertical
 
   // Clocks
-  horCntr.io.pxlCLK := clkdiv.io.tick
+  horCntr.io.pxlCLK := clkDiv.io.tick
   verCntr.io.enVCnt := horCntr.io.enVCnt
 
   // Display only in display time
@@ -30,4 +31,8 @@ class VGAController extends Module{
   // Sync outputs
   io.hSync := horCntr.io.horSync
   io.vSync := verCntr.io.verSync
+
+  //Counters ouput
+  io.horCntr := horCntr.io.horCnt
+  io.verCntr := verCntr.io.verCnt
 }

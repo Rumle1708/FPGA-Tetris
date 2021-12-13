@@ -1,0 +1,29 @@
+[
+  {
+    "class":"firrtl.stage.FirrtlFileAnnotation",
+    "file":"test_run_dir\\ProcessorSpec1048344284\\Top.lo.fir"
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.LowFirrtlEmitter"
+  },
+  {
+    "class":"firrtl.annotations.MemorySynthInit$"
+  },
+  {
+    "class":"logger.LogLevelAnnotation",
+    "globalLogLevel":{
+      
+    }
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"test_run_dir/ProcessorSpec1048344284"
+  },
+  {
+    "class":"firrtl.annotations.MemoryFileInlineAnnotation",
+    "target":"~Top|Top>mem",
+    "filename":"MemoryData.txt",
+    "hexOrBinary":"h"
+  }
+]

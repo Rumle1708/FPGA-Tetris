@@ -1,17 +1,43 @@
 import chisel3._
+import chisel3.util.experimental.loadMemoryFromFileInline
+import chisel3.experimental.{annotate, ChiselAnnotation}
+import firrtl.annotations.MemorySynthInit
+
+import java.io.{File, FileWriter}
 
 class Top extends Module{
     val io = IO(new Bundle{
         val hSync, vSync = Output(Bool())
         val R, G, B = Output(UInt(4.W))
-        val Rin, Gin, Bin = Input(UInt(4.W))
+        // val Rin, Gin, Bin = Input(UInt(4.W))
     })
+
+    /*
+    val mem = SyncReadMem(2048, UInt(12.W))
+    // loadMemoryFromFile(mem, "MemoryData.txt")
+    if ("MemoryData.txt".trim().nonEmpty) {
+        loadMemoryFromFile(mem, "MemoryData.txt")
+    }
+
+     */
+    // Notice the annotation below
+    annotate(new ChiselAnnotation {
+        override def toFirrtl =
+            MemorySynthInit
+    })
+
+    val mem = SyncReadMem(2048, UInt(12.W))
+    if ("C:/Users/Mads Rumle Nordstrom/Desktop/FPGA-Tetris/generated/MemoryData.txt".trim().nonEmpty) {
+        loadMemoryFromFileInline(mem, "C:/Users/Mads Rumle Nordstrom/Desktop/FPGA-Tetris/generated/MemoryData.txt")
+    }
 
     // VGA controller and inputs
     val vGACtrl = Module(new VGAController)
-    vGACtrl.io.Rin := io.Rin
-    vGACtrl.io.Gin := io.Gin
-    vGACtrl.io.Bin := io.Bin
+    val memAdrs = vGACtrl.io.horCntr + vGACtrl.io.verCntr
+    val memVal = mem(memAdrs)
+    vGACtrl.io.Rin := memVal(3,0)
+    vGACtrl.io.Gin := memVal(7,4)
+    vGACtrl.io.Bin := memVal(11,8)
 
     // Color signals
     io.R := vGACtrl.io.R
@@ -24,6 +50,28 @@ class Top extends Module{
 }
 
 object Top extends App {
+    // Setup file writer
+    def writeFile(fileName: String, content: String) {
+        if(fileName != null && !fileName.isEmpty()) {
+            var file = new File(fileName);
+            var fileWriter = new FileWriter(file);
+            fileWriter.write(content);
+            fileWriter.close();
+        }
+    }
+    // Write program to .txt file (used in InstructionMemory.scala)
+    var s = ""
+    for (i <- 0 until 2048) {
+        if (i % 3 == 0){
+            s += "f00" + "\n"
+        } else if (i % 10 == 0){
+            s += "00f" + "\n"
+        } else {
+            s += "0f0" + "\n"
+        }
+    }
+    writeFile("C:/Users/Mads Rumle Nordstrom/Desktop/FPGA-Tetris/generated/MemoryData.txt", s)
+
     // Generate verilog
     println("Generating hardware")
     (new chisel3.stage.ChiselStage).emitVerilog(new Top(), Array("--target-dir", "generated"))

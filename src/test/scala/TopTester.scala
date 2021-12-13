@@ -3,7 +3,6 @@ import chisel3._
 import chisel3.iotesters.Driver
 import chisel3.iotesters.PeekPokeTester
 import org.scalatest._
-import Top._
 
 class TopTester(dut: Top) extends PeekPokeTester(dut){
   //val timeInMilliSecs = 16.0

@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Mads Rumle Nordstrom/Desktop/FPGA-Tetris/generated/Top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ClockDivider
+INFO: [VRFC 10-311] analyzing module HorizontalCounter
+INFO: [VRFC 10-311] analyzing module VerticalCounter
+INFO: [VRFC 10-311] analyzing module VGAController
+INFO: [VRFC 10-311] analyzing module Top

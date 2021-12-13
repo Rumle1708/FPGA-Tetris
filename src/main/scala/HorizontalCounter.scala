@@ -10,7 +10,7 @@ import chisel3._
 class HorizontalCounter extends Module{
   val io = IO(new Bundle{
     val pxlCLK = Input(Bool())
-    val horCnt = Output(UInt(16.W))
+    val horCnt = Output(UInt(10.W))
     val horSync, dispTime, enVCnt = Output(Bool())
   })
 
@@ -21,9 +21,9 @@ class HorizontalCounter extends Module{
   def BACK_PORCH = 48
 
 
-  val cntReg = RegInit(0.U(16.W))
+  val cntReg = RegInit(0.U(10.W))
   val outputReg1 = RegInit(1.U(1.W))
-  val outputReg2 = RegInit(1.U(1.W)) // bit0 = horSync bit 1 = enVCnt bit2 = dispTime
+  val outputReg2 = RegInit(1.U(1.W))
 
   // Outputs
   io.horSync := outputReg1  // 1
