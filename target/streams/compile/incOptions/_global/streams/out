@@ -1,17 +1,37 @@
 [debug] Created transactional ClassFileManager with tempDir = C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\target\scala-2.12\classes.bak
 [debug] About to delete class files:
-[debug] 	Top$delayedInit$body.class
-[debug] 	Top$$anon$1.class
-[debug] 	Top.class
+[debug] 	ClockDivider.class
+[debug] 	VerticalCounter$$anon$1.class
 [debug] 	Top$.class
+[debug] 	VerticalCounter.class
+[debug] 	HorizontalCounter.class
+[debug] 	Top.class
+[debug] 	Top$$anon$1.class
+[debug] 	Top$delayedInit$body.class
+[debug] 	ClockDivider$$anon$1.class
+[debug] 	HorizontalCounter$$anon$1.class
 [debug] We backup class files:
-[debug] 	Top$delayedInit$body.class
-[debug] 	Top$$anon$1.class
-[debug] 	Top.class
+[debug] 	ClockDivider.class
+[debug] 	VerticalCounter$$anon$1.class
 [debug] 	Top$.class
+[debug] 	VerticalCounter.class
+[debug] 	HorizontalCounter.class
+[debug] 	Top.class
+[debug] 	Top$$anon$1.class
+[debug] 	Top$delayedInit$body.class
+[debug] 	ClockDivider$$anon$1.class
+[debug] 	HorizontalCounter$$anon$1.class
 [debug] Registering generated classes:
-[debug] 	Top$delayedInit$body.class
-[debug] 	Top$$anon$1.class
-[debug] 	Top.class
+[debug] 	VGAController.class
+[debug] 	ClockDivider.class
+[debug] 	VerticalCounter$$anon$1.class
 [debug] 	Top$.class
+[debug] 	VerticalCounter.class
+[debug] 	HorizontalCounter.class
+[debug] 	Top.class
+[debug] 	Top$$anon$1.class
+[debug] 	Top$delayedInit$body.class
+[debug] 	ClockDivider$$anon$1.class
+[debug] 	HorizontalCounter$$anon$1.class
+[debug] 	VGAController$$anon$1.class
 [debug] Removing the temporary directory used for backing up class files: C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\target\scala-2.12\classes.bak

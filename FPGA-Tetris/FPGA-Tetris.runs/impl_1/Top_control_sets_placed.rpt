@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2.2 (win64) Build 3118627 Tue Feb  9 05:14:06 MST 2021
-| Date         : Mon Dec 13 16:47:03 2021
+| Date         : Mon Dec 13 17:27:08 2021
 | Host         : DESKTOP-RPC3V5J running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_control_sets_placed.rpt
 | Design       : Top
@@ -63,7 +63,7 @@ Table of Contents
 | No           | Yes                   | No                     |               7 |            4 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              32 |           10 |
+| Yes          | Yes                   | No                     |              32 |            9 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,8 +74,8 @@ Table of Contents
 |   Clock Signal   |     Enable Signal    | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +------------------+----------------------+------------------+------------------+----------------+--------------+
 |  clock_IBUF_BUFG |                      | reset_IBUF       |                4 |              7 |         1.75 |
-|  clock_IBUF_BUFG | clkdiv/Q[0]          | reset_IBUF       |                6 |             16 |         2.67 |
-|  clock_IBUF_BUFG | horCntr/io_fuck_OBUF | reset_IBUF       |                4 |             16 |         4.00 |
+|  clock_IBUF_BUFG | vGACtrl/clkdiv/Q[0]  | reset_IBUF       |                4 |             16 |         4.00 |
+|  clock_IBUF_BUFG | vGACtrl/horCntr/E[0] | reset_IBUF       |                5 |             16 |         3.20 |
 +------------------+----------------------+------------------+------------------+----------------+--------------+
 
 

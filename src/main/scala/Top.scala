@@ -2,33 +2,25 @@ import chisel3._
 
 class Top extends Module{
     val io = IO(new Bundle{
-        val HS, VS, = Output(Bool())
+        val hSync, vSync = Output(Bool())
         val R, G, B = Output(UInt(4.W))
         val Rin, Gin, Bin = Input(UInt(4.W))
     })
-    // Move constants later
-    val FREQ = 100000000
 
-    val clkdiv = Module(new ClockDivider(25000000, FREQ)) // 25MHz clock
-    val horCntr = Module(new HorizontalCounter) // Horizontal
-    val verCntr = Module(new VerticalCounter) // Vertical
-    horCntr.io.pxlCLK := clkdiv.io.tick
-    verCntr.io.enVCnt := horCntr.io.enVCnt
+    // VGA controller and inputs
+    val vGACtrl = Module(new VGAController)
+    vGACtrl.io.Rin := io.Rin
+    vGACtrl.io.Gin := io.Gin
+    vGACtrl.io.Bin := io.Bin
 
+    // Color signals
+    io.R := vGACtrl.io.R
+    io.G := vGACtrl.io.G
+    io.B := vGACtrl.io.B
 
-    // Display only in display time
-    when(horCntr.io.dispTime && verCntr.io.dispTime){
-        io.R := io.Rin
-        io.G := io.Gin
-        io.B := io.Bin
-    }. otherwise{
-        io.R := 0.U
-        io.G := 0.U
-        io.B := 0.U
-    }
-
-    io.HS := horCntr.io.horSync
-    io.VS := verCntr.io.verSync
+    // Sync signals
+    io.hSync := vGACtrl.io.hSync
+    io.vSync := vGACtrl.io.vSync
 }
 
 object Top extends App {

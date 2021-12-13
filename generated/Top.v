@@ -171,29 +171,29 @@ module VerticalCounter(
   reg [15:0] cntReg; // @[VerticalCounter.scala 22:23]
   reg  outputReg1; // @[VerticalCounter.scala 23:27]
   reg  outputReg2; // @[VerticalCounter.scala 24:27]
-  wire [15:0] _T_1 = cntReg + 16'h1; // @[VerticalCounter.scala 33:22]
-  wire  _T_3 = ~outputReg2; // @[VerticalCounter.scala 35:21]
-  wire  _GEN_0 = cntReg == 16'h1df ? ~outputReg2 : outputReg2; // @[VerticalCounter.scala 34:42 VerticalCounter.scala 35:18 VerticalCounter.scala 24:27]
-  wire  _T_5 = ~outputReg1; // @[VerticalCounter.scala 38:21]
-  wire  _GEN_1 = cntReg == 16'h1e9 ? ~outputReg1 : outputReg1; // @[VerticalCounter.scala 37:56 VerticalCounter.scala 38:18 VerticalCounter.scala 23:27]
-  wire  _GEN_2 = cntReg == 16'h1eb ? _T_5 : _GEN_1; // @[VerticalCounter.scala 40:69 VerticalCounter.scala 41:18]
-  wire  _GEN_4 = cntReg == 16'h20c ? _T_3 : _GEN_0; // @[VerticalCounter.scala 43:82 VerticalCounter.scala 45:18]
-  wire  _GEN_7 = io_enVCnt ? _GEN_4 : outputReg2; // @[VerticalCounter.scala 32:19 VerticalCounter.scala 24:27]
-  wire  _GEN_8 = io_enVCnt ? _GEN_2 : outputReg1; // @[VerticalCounter.scala 32:19 VerticalCounter.scala 23:27]
+  wire [15:0] _T_1 = cntReg + 16'h1; // @[VerticalCounter.scala 32:22]
+  wire  _T_3 = ~outputReg2; // @[VerticalCounter.scala 34:21]
+  wire  _GEN_0 = cntReg == 16'h1df ? ~outputReg2 : outputReg2; // @[VerticalCounter.scala 33:42 VerticalCounter.scala 34:18 VerticalCounter.scala 24:27]
+  wire  _T_5 = ~outputReg1; // @[VerticalCounter.scala 37:21]
+  wire  _GEN_1 = cntReg == 16'h1e9 ? ~outputReg1 : outputReg1; // @[VerticalCounter.scala 36:56 VerticalCounter.scala 37:18 VerticalCounter.scala 23:27]
+  wire  _GEN_2 = cntReg == 16'h1eb ? _T_5 : _GEN_1; // @[VerticalCounter.scala 39:69 VerticalCounter.scala 40:18]
+  wire  _GEN_4 = cntReg == 16'h20c ? _T_3 : _GEN_0; // @[VerticalCounter.scala 42:82 VerticalCounter.scala 44:18]
+  wire  _GEN_6 = io_enVCnt ? _GEN_4 : outputReg2; // @[VerticalCounter.scala 31:19 VerticalCounter.scala 24:27]
+  wire  _GEN_7 = io_enVCnt ? _GEN_2 : outputReg1; // @[VerticalCounter.scala 31:19 VerticalCounter.scala 23:27]
   assign io_verSync = outputReg1; // @[VerticalCounter.scala 27:14]
   assign io_dispTime = outputReg2; // @[VerticalCounter.scala 28:15]
   always @(posedge clock) begin
     if (reset) begin // @[VerticalCounter.scala 22:23]
       cntReg <= 16'h0; // @[VerticalCounter.scala 22:23]
-    end else if (io_enVCnt) begin // @[VerticalCounter.scala 32:19]
-      if (cntReg == 16'h20c) begin // @[VerticalCounter.scala 43:82]
-        cntReg <= 16'h0; // @[VerticalCounter.scala 44:14]
+    end else if (io_enVCnt) begin // @[VerticalCounter.scala 31:19]
+      if (cntReg == 16'h20c) begin // @[VerticalCounter.scala 42:82]
+        cntReg <= 16'h0; // @[VerticalCounter.scala 43:14]
       end else begin
-        cntReg <= _T_1; // @[VerticalCounter.scala 33:12]
+        cntReg <= _T_1; // @[VerticalCounter.scala 32:12]
       end
     end
-    outputReg1 <= reset | _GEN_8; // @[VerticalCounter.scala 23:27 VerticalCounter.scala 23:27]
-    outputReg2 <= reset | _GEN_7; // @[VerticalCounter.scala 24:27 VerticalCounter.scala 24:27]
+    outputReg1 <= reset | _GEN_7; // @[VerticalCounter.scala 23:27 VerticalCounter.scala 23:27]
+    outputReg2 <= reset | _GEN_6; // @[VerticalCounter.scala 24:27 VerticalCounter.scala 24:27]
   end
 // Register and memory initialization
 `ifdef RANDOMIZE_GARBAGE_ASSIGN
@@ -245,39 +245,38 @@ end // initial
 `endif
 `endif // SYNTHESIS
 endmodule
-module Top(
+module VGAController(
   input        clock,
   input        reset,
-  output       io_HS,
-  output       io_VS,
-  output       io_fuck,
-  output [3:0] io_R,
-  output [3:0] io_G,
-  output [3:0] io_B,
   input  [3:0] io_Rin,
   input  [3:0] io_Gin,
-  input  [3:0] io_Bin
+  input  [3:0] io_Bin,
+  output       io_hSync,
+  output       io_vSync,
+  output [3:0] io_R,
+  output [3:0] io_G,
+  output [3:0] io_B
 );
-  wire  clkdiv_clock; // @[Top.scala 12:24]
-  wire  clkdiv_reset; // @[Top.scala 12:24]
-  wire  clkdiv_io_tick; // @[Top.scala 12:24]
-  wire  horCntr_clock; // @[Top.scala 13:25]
-  wire  horCntr_reset; // @[Top.scala 13:25]
-  wire  horCntr_io_pxlCLK; // @[Top.scala 13:25]
-  wire  horCntr_io_horSync; // @[Top.scala 13:25]
-  wire  horCntr_io_dispTime; // @[Top.scala 13:25]
-  wire  horCntr_io_enVCnt; // @[Top.scala 13:25]
-  wire  verCntr_clock; // @[Top.scala 14:25]
-  wire  verCntr_reset; // @[Top.scala 14:25]
-  wire  verCntr_io_enVCnt; // @[Top.scala 14:25]
-  wire  verCntr_io_verSync; // @[Top.scala 14:25]
-  wire  verCntr_io_dispTime; // @[Top.scala 14:25]
-  ClockDivider clkdiv ( // @[Top.scala 12:24]
+  wire  clkdiv_clock; // @[VGAController.scala 11:22]
+  wire  clkdiv_reset; // @[VGAController.scala 11:22]
+  wire  clkdiv_io_tick; // @[VGAController.scala 11:22]
+  wire  horCntr_clock; // @[VGAController.scala 12:23]
+  wire  horCntr_reset; // @[VGAController.scala 12:23]
+  wire  horCntr_io_pxlCLK; // @[VGAController.scala 12:23]
+  wire  horCntr_io_horSync; // @[VGAController.scala 12:23]
+  wire  horCntr_io_dispTime; // @[VGAController.scala 12:23]
+  wire  horCntr_io_enVCnt; // @[VGAController.scala 12:23]
+  wire  verCntr_clock; // @[VGAController.scala 13:23]
+  wire  verCntr_reset; // @[VGAController.scala 13:23]
+  wire  verCntr_io_enVCnt; // @[VGAController.scala 13:23]
+  wire  verCntr_io_verSync; // @[VGAController.scala 13:23]
+  wire  verCntr_io_dispTime; // @[VGAController.scala 13:23]
+  ClockDivider clkdiv ( // @[VGAController.scala 11:22]
     .clock(clkdiv_clock),
     .reset(clkdiv_reset),
     .io_tick(clkdiv_io_tick)
   );
-  HorizontalCounter horCntr ( // @[Top.scala 13:25]
+  HorizontalCounter horCntr ( // @[VGAController.scala 12:23]
     .clock(horCntr_clock),
     .reset(horCntr_reset),
     .io_pxlCLK(horCntr_io_pxlCLK),
@@ -285,25 +284,69 @@ module Top(
     .io_dispTime(horCntr_io_dispTime),
     .io_enVCnt(horCntr_io_enVCnt)
   );
-  VerticalCounter verCntr ( // @[Top.scala 14:25]
+  VerticalCounter verCntr ( // @[VGAController.scala 13:23]
     .clock(verCntr_clock),
     .reset(verCntr_reset),
     .io_enVCnt(verCntr_io_enVCnt),
     .io_verSync(verCntr_io_verSync),
     .io_dispTime(verCntr_io_dispTime)
   );
-  assign io_HS = horCntr_io_horSync; // @[Top.scala 30:11]
-  assign io_VS = verCntr_io_verSync; // @[Top.scala 31:11]
-  assign io_fuck = horCntr_io_enVCnt; // @[Top.scala 32:13]
-  assign io_R = horCntr_io_dispTime & verCntr_io_dispTime ? io_Rin : 4'h0; // @[Top.scala 20:53 Top.scala 21:14 Top.scala 25:14]
-  assign io_G = horCntr_io_dispTime & verCntr_io_dispTime ? io_Gin : 4'h0; // @[Top.scala 20:53 Top.scala 22:14 Top.scala 26:14]
-  assign io_B = horCntr_io_dispTime & verCntr_io_dispTime ? io_Bin : 4'h0; // @[Top.scala 20:53 Top.scala 23:14 Top.scala 27:14]
+  assign io_hSync = horCntr_io_horSync; // @[VGAController.scala 31:12]
+  assign io_vSync = verCntr_io_verSync; // @[VGAController.scala 32:12]
+  assign io_R = horCntr_io_dispTime & verCntr_io_dispTime ? io_Rin : 4'h0; // @[VGAController.scala 20:51 VGAController.scala 21:10 VGAController.scala 25:10]
+  assign io_G = horCntr_io_dispTime & verCntr_io_dispTime ? io_Gin : 4'h0; // @[VGAController.scala 20:51 VGAController.scala 22:10 VGAController.scala 26:10]
+  assign io_B = horCntr_io_dispTime & verCntr_io_dispTime ? io_Bin : 4'h0; // @[VGAController.scala 20:51 VGAController.scala 23:10 VGAController.scala 27:10]
   assign clkdiv_clock = clock;
   assign clkdiv_reset = reset;
   assign horCntr_clock = clock;
   assign horCntr_reset = reset;
-  assign horCntr_io_pxlCLK = clkdiv_io_tick; // @[Top.scala 15:23]
+  assign horCntr_io_pxlCLK = clkdiv_io_tick; // @[VGAController.scala 16:21]
   assign verCntr_clock = clock;
   assign verCntr_reset = reset;
-  assign verCntr_io_enVCnt = horCntr_io_enVCnt; // @[Top.scala 16:23]
+  assign verCntr_io_enVCnt = horCntr_io_enVCnt; // @[VGAController.scala 17:21]
+endmodule
+module Top(
+  input        clock,
+  input        reset,
+  output       io_hSync,
+  output       io_vSync,
+  output [3:0] io_R,
+  output [3:0] io_G,
+  output [3:0] io_B,
+  input  [3:0] io_Rin,
+  input  [3:0] io_Gin,
+  input  [3:0] io_Bin
+);
+  wire  vGACtrl_clock; // @[Top.scala 11:25]
+  wire  vGACtrl_reset; // @[Top.scala 11:25]
+  wire [3:0] vGACtrl_io_Rin; // @[Top.scala 11:25]
+  wire [3:0] vGACtrl_io_Gin; // @[Top.scala 11:25]
+  wire [3:0] vGACtrl_io_Bin; // @[Top.scala 11:25]
+  wire  vGACtrl_io_hSync; // @[Top.scala 11:25]
+  wire  vGACtrl_io_vSync; // @[Top.scala 11:25]
+  wire [3:0] vGACtrl_io_R; // @[Top.scala 11:25]
+  wire [3:0] vGACtrl_io_G; // @[Top.scala 11:25]
+  wire [3:0] vGACtrl_io_B; // @[Top.scala 11:25]
+  VGAController vGACtrl ( // @[Top.scala 11:25]
+    .clock(vGACtrl_clock),
+    .reset(vGACtrl_reset),
+    .io_Rin(vGACtrl_io_Rin),
+    .io_Gin(vGACtrl_io_Gin),
+    .io_Bin(vGACtrl_io_Bin),
+    .io_hSync(vGACtrl_io_hSync),
+    .io_vSync(vGACtrl_io_vSync),
+    .io_R(vGACtrl_io_R),
+    .io_G(vGACtrl_io_G),
+    .io_B(vGACtrl_io_B)
+  );
+  assign io_hSync = vGACtrl_io_hSync; // @[Top.scala 22:14]
+  assign io_vSync = vGACtrl_io_vSync; // @[Top.scala 23:14]
+  assign io_R = vGACtrl_io_R; // @[Top.scala 17:10]
+  assign io_G = vGACtrl_io_G; // @[Top.scala 18:10]
+  assign io_B = vGACtrl_io_B; // @[Top.scala 19:10]
+  assign vGACtrl_clock = clock;
+  assign vGACtrl_reset = reset;
+  assign vGACtrl_io_Rin = io_Rin; // @[Top.scala 12:20]
+  assign vGACtrl_io_Gin = io_Gin; // @[Top.scala 13:20]
+  assign vGACtrl_io_Bin = io_Bin; // @[Top.scala 14:20]
 endmodule

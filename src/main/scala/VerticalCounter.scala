@@ -11,7 +11,7 @@ class VerticalCounter extends Module{
   val io = IO(new Bundle{
     val enVCnt = Input(Bool())
     val verCnt = Output(UInt(16.W))
-    val verSync, dispTime, = Output(Bool())
+    val verSync, dispTime = Output(Bool())
   })
   // Constants
   def VISIBLE_AREA = 480

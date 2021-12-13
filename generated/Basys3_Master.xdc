@@ -126,7 +126,7 @@ set_property PACKAGE_PIN U18 [get_ports reset]
 
 ##Pmod Header JA
 ##Sch name = JA1
-set_property PACKAGE_PIN J1 [get_ports {io_fuck}]					
+#set_property PACKAGE_PIN J1 [get_ports {io_fuck}]					
 	#set_property IOSTANDARD LVCMOS33 [get_ports {JA[0]}]
 ##Sch name = JA2
 #set_property PACKAGE_PIN L2 [get_ports {io_VS}]					
@@ -260,9 +260,9 @@ set_property PACKAGE_PIN G17 [get_ports {io_G[2]}]
 	#set_property IOSTANDARD LVCMOS33 [get_ports {vgaGreen[2]}]
 set_property PACKAGE_PIN D17 [get_ports {io_G[3]}]				
 	#set_property IOSTANDARD LVCMOS33 [get_ports {vgaGreen[3]}]
-set_property PACKAGE_PIN P19 [get_ports {io_HS}]						
+set_property PACKAGE_PIN P19 [get_ports {io_hSync}]						
 	#set_property IOSTANDARD LVCMOS33 [get_ports Hsync]
-set_property PACKAGE_PIN R19 [get_ports {io_VS}]						
+set_property PACKAGE_PIN R19 [get_ports {io_vSync}]						
 	#set_property IOSTANDARD LVCMOS33 [get_ports Vsync]
 
 

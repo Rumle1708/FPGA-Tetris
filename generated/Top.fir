@@ -60,7 +60,7 @@ circuit Top :
   module VerticalCounter : 
     input clock : Clock
     input reset : Reset
-    output io : {flip enVCnt : UInt<1>, verCnt : UInt<16>, verSync : UInt<1>, dispTime : UInt<1>, fuck : UInt<1>}
+    output io : {flip enVCnt : UInt<1>, verCnt : UInt<16>, verSync : UInt<1>, dispTime : UInt<1>}
     
     reg cntReg : UInt<16>, clock with : (reset => (reset, UInt<16>("h00"))) @[VerticalCounter.scala 22:23]
     reg outputReg1 : UInt<1>, clock with : (reset => (reset, UInt<1>("h01"))) @[VerticalCounter.scala 23:27]
@@ -68,63 +68,77 @@ circuit Top :
     io.verSync <= outputReg1 @[VerticalCounter.scala 27:14]
     io.dispTime <= outputReg2 @[VerticalCounter.scala 28:15]
     io.verCnt <= cntReg @[VerticalCounter.scala 29:13]
-    io.fuck <= UInt<1>("h00") @[VerticalCounter.scala 30:11]
-    when io.enVCnt : @[VerticalCounter.scala 32:19]
-      node _T = add(cntReg, UInt<1>("h01")) @[VerticalCounter.scala 33:22]
-      node _T_1 = tail(_T, 1) @[VerticalCounter.scala 33:22]
-      cntReg <= _T_1 @[VerticalCounter.scala 33:12]
-      node _T_2 = eq(cntReg, UInt<9>("h01df")) @[VerticalCounter.scala 34:17]
-      when _T_2 : @[VerticalCounter.scala 34:42]
-        node _T_3 = not(outputReg2) @[VerticalCounter.scala 35:21]
-        outputReg2 <= _T_3 @[VerticalCounter.scala 35:18]
-        skip @[VerticalCounter.scala 34:42]
-      node _T_4 = eq(cntReg, UInt<9>("h01e9")) @[VerticalCounter.scala 37:17]
-      when _T_4 : @[VerticalCounter.scala 37:56]
-        node _T_5 = not(outputReg1) @[VerticalCounter.scala 38:21]
-        outputReg1 <= _T_5 @[VerticalCounter.scala 38:18]
-        skip @[VerticalCounter.scala 37:56]
-      node _T_6 = eq(cntReg, UInt<9>("h01eb")) @[VerticalCounter.scala 40:17]
-      when _T_6 : @[VerticalCounter.scala 40:69]
-        node _T_7 = not(outputReg1) @[VerticalCounter.scala 41:21]
-        outputReg1 <= _T_7 @[VerticalCounter.scala 41:18]
-        skip @[VerticalCounter.scala 40:69]
-      node _T_8 = eq(cntReg, UInt<10>("h020c")) @[VerticalCounter.scala 43:17]
-      when _T_8 : @[VerticalCounter.scala 43:82]
-        cntReg <= UInt<1>("h00") @[VerticalCounter.scala 44:14]
-        node _T_9 = not(outputReg2) @[VerticalCounter.scala 45:21]
-        outputReg2 <= _T_9 @[VerticalCounter.scala 45:18]
-        io.fuck <= UInt<1>("h01") @[VerticalCounter.scala 46:15]
-        skip @[VerticalCounter.scala 43:82]
-      skip @[VerticalCounter.scala 32:19]
+    when io.enVCnt : @[VerticalCounter.scala 31:19]
+      node _T = add(cntReg, UInt<1>("h01")) @[VerticalCounter.scala 32:22]
+      node _T_1 = tail(_T, 1) @[VerticalCounter.scala 32:22]
+      cntReg <= _T_1 @[VerticalCounter.scala 32:12]
+      node _T_2 = eq(cntReg, UInt<9>("h01df")) @[VerticalCounter.scala 33:17]
+      when _T_2 : @[VerticalCounter.scala 33:42]
+        node _T_3 = not(outputReg2) @[VerticalCounter.scala 34:21]
+        outputReg2 <= _T_3 @[VerticalCounter.scala 34:18]
+        skip @[VerticalCounter.scala 33:42]
+      node _T_4 = eq(cntReg, UInt<9>("h01e9")) @[VerticalCounter.scala 36:17]
+      when _T_4 : @[VerticalCounter.scala 36:56]
+        node _T_5 = not(outputReg1) @[VerticalCounter.scala 37:21]
+        outputReg1 <= _T_5 @[VerticalCounter.scala 37:18]
+        skip @[VerticalCounter.scala 36:56]
+      node _T_6 = eq(cntReg, UInt<9>("h01eb")) @[VerticalCounter.scala 39:17]
+      when _T_6 : @[VerticalCounter.scala 39:69]
+        node _T_7 = not(outputReg1) @[VerticalCounter.scala 40:21]
+        outputReg1 <= _T_7 @[VerticalCounter.scala 40:18]
+        skip @[VerticalCounter.scala 39:69]
+      node _T_8 = eq(cntReg, UInt<10>("h020c")) @[VerticalCounter.scala 42:17]
+      when _T_8 : @[VerticalCounter.scala 42:82]
+        cntReg <= UInt<1>("h00") @[VerticalCounter.scala 43:14]
+        node _T_9 = not(outputReg2) @[VerticalCounter.scala 44:21]
+        outputReg2 <= _T_9 @[VerticalCounter.scala 44:18]
+        skip @[VerticalCounter.scala 42:82]
+      skip @[VerticalCounter.scala 31:19]
+    
+  module VGAController : 
+    input clock : Clock
+    input reset : Reset
+    output io : {flip Rin : UInt<4>, flip Gin : UInt<4>, flip Bin : UInt<4>, hSync : UInt<1>, vSync : UInt<1>, R : UInt<4>, G : UInt<4>, B : UInt<4>}
+    
+    inst clkdiv of ClockDivider @[VGAController.scala 11:22]
+    clkdiv.clock <= clock
+    clkdiv.reset <= reset
+    inst horCntr of HorizontalCounter @[VGAController.scala 12:23]
+    horCntr.clock <= clock
+    horCntr.reset <= reset
+    inst verCntr of VerticalCounter @[VGAController.scala 13:23]
+    verCntr.clock <= clock
+    verCntr.reset <= reset
+    horCntr.io.pxlCLK <= clkdiv.io.tick @[VGAController.scala 16:21]
+    verCntr.io.enVCnt <= horCntr.io.enVCnt @[VGAController.scala 17:21]
+    node _T = and(horCntr.io.dispTime, verCntr.io.dispTime) @[VGAController.scala 20:28]
+    when _T : @[VGAController.scala 20:51]
+      io.R <= io.Rin @[VGAController.scala 21:10]
+      io.G <= io.Gin @[VGAController.scala 22:10]
+      io.B <= io.Bin @[VGAController.scala 23:10]
+      skip @[VGAController.scala 20:51]
+    else : @[VGAController.scala 24:15]
+      io.R <= UInt<1>("h00") @[VGAController.scala 25:10]
+      io.G <= UInt<1>("h00") @[VGAController.scala 26:10]
+      io.B <= UInt<1>("h00") @[VGAController.scala 27:10]
+      skip @[VGAController.scala 24:15]
+    io.hSync <= horCntr.io.horSync @[VGAController.scala 31:12]
+    io.vSync <= verCntr.io.verSync @[VGAController.scala 32:12]
     
   module Top : 
     input clock : Clock
     input reset : UInt<1>
-    output io : {HS : UInt<1>, VS : UInt<1>, fuck : UInt<1>, R : UInt<4>, G : UInt<4>, B : UInt<4>, flip Rin : UInt<4>, flip Gin : UInt<4>, flip Bin : UInt<4>}
+    output io : {hSync : UInt<1>, vSync : UInt<1>, R : UInt<4>, G : UInt<4>, B : UInt<4>, flip Rin : UInt<4>, flip Gin : UInt<4>, flip Bin : UInt<4>}
     
-    inst clkdiv of ClockDivider @[Top.scala 12:24]
-    clkdiv.clock <= clock
-    clkdiv.reset <= reset
-    inst horCntr of HorizontalCounter @[Top.scala 13:25]
-    horCntr.clock <= clock
-    horCntr.reset <= reset
-    inst verCntr of VerticalCounter @[Top.scala 14:25]
-    verCntr.clock <= clock
-    verCntr.reset <= reset
-    horCntr.io.pxlCLK <= clkdiv.io.tick @[Top.scala 15:23]
-    verCntr.io.enVCnt <= horCntr.io.enVCnt @[Top.scala 16:23]
-    node _T = and(horCntr.io.dispTime, verCntr.io.dispTime) @[Top.scala 20:30]
-    when _T : @[Top.scala 20:53]
-      io.R <= io.Rin @[Top.scala 21:14]
-      io.G <= io.Gin @[Top.scala 22:14]
-      io.B <= io.Bin @[Top.scala 23:14]
-      skip @[Top.scala 20:53]
-    else : @[Top.scala 24:17]
-      io.R <= UInt<1>("h00") @[Top.scala 25:14]
-      io.G <= UInt<1>("h00") @[Top.scala 26:14]
-      io.B <= UInt<1>("h00") @[Top.scala 27:14]
-      skip @[Top.scala 24:17]
-    io.HS <= horCntr.io.horSync @[Top.scala 30:11]
-    io.VS <= verCntr.io.verSync @[Top.scala 31:11]
-    io.fuck <= horCntr.io.enVCnt @[Top.scala 32:13]
+    inst vGACtrl of VGAController @[Top.scala 11:25]
+    vGACtrl.clock <= clock
+    vGACtrl.reset <= reset
+    vGACtrl.io.Rin <= io.Rin @[Top.scala 12:20]
+    vGACtrl.io.Gin <= io.Gin @[Top.scala 13:20]
+    vGACtrl.io.Bin <= io.Bin @[Top.scala 14:20]
+    io.R <= vGACtrl.io.R @[Top.scala 17:10]
+    io.G <= vGACtrl.io.G @[Top.scala 18:10]
+    io.B <= vGACtrl.io.B @[Top.scala 19:10]
+    io.hSync <= vGACtrl.io.hSync @[Top.scala 22:14]
+    io.vSync <= vGACtrl.io.vSync @[Top.scala 23:14]
     
