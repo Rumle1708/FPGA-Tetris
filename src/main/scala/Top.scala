@@ -12,23 +12,19 @@ class Top extends Module{
         // val Rin, Gin, Bin = Input(UInt(4.W))
     })
 
-    /*
-    val mem = SyncReadMem(2048, UInt(12.W))
-    // loadMemoryFromFile(mem, "MemoryData.txt")
-    if ("MemoryData.txt".trim().nonEmpty) {
-        loadMemoryFromFile(mem, "MemoryData.txt")
-    }
-
-     */
-    // Notice the annotation below
     annotate(new ChiselAnnotation {
         override def toFirrtl =
             MemorySynthInit
     })
 
     val mem = SyncReadMem(2048, UInt(12.W))
+    /* For windows
     if ("C:/Users/Mads Rumle Nordstrom/Desktop/FPGA-Tetris/generated/MemoryData.txt".trim().nonEmpty) {
         loadMemoryFromFileInline(mem, "C:/Users/Mads Rumle Nordstrom/Desktop/FPGA-Tetris/generated/MemoryData.txt")
+    }
+     */
+    if ("generated/MemoryData.txt".trim().nonEmpty) {
+        loadMemoryFromFileInline(mem, "generated/MemoryData.txt")
     }
 
     // VGA controller and inputs
@@ -50,6 +46,7 @@ class Top extends Module{
 }
 
 object Top extends App {
+
     // Setup file writer
     def writeFile(fileName: String, content: String) {
         if(fileName != null && !fileName.isEmpty()) {
@@ -59,7 +56,8 @@ object Top extends App {
             fileWriter.close();
         }
     }
-    // Write program to .txt file (used in InstructionMemory.scala)
+
+    // Write program to .txt file
     var s = ""
     for (i <- 0 until 2048) {
         if (i % 3 == 0){
@@ -70,7 +68,8 @@ object Top extends App {
             s += "0f0" + "\n"
         }
     }
-    writeFile("C:/Users/Mads Rumle Nordstrom/Desktop/FPGA-Tetris/generated/MemoryData.txt", s)
+    // writeFile("C:/Users/Mads Rumle Nordstrom/Desktop/FPGA-Tetris/generated/MemoryData.txt", s)
+    writeFile("generated/MemoryData.txt", s)
 
     // Generate verilog
     println("Generating hardware")

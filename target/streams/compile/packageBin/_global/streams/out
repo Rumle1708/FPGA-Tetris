@@ -1,1 +1,29 @@
-[debug] Jar uptodate: C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\target\scala-2.12\fpga-tetris_2.12-0.1.0-SNAPSHOT.jar
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/fpga-tetris_2.12-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Top$$anon$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/Top$$anon$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Top.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/Top.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HorizontalCounter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/HorizontalCounter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HorizontalCounter$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/HorizontalCounter$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ClockDivider.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/ClockDivider.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Top$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/Top$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	VerticalCounter$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/VerticalCounter$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	VGAController.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/VGAController.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Top$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/Top$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ClockDivider$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/ClockDivider$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Top$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/Top$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	VerticalCounter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/VerticalCounter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	VGAController$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/target/scala-2.12/classes/VGAController$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

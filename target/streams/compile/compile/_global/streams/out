@@ -1,2 +1,4 @@
-[debug] Acquiring lock on file C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\project\target\.sbt-compilation-infos\fpga-tetris-compile\.sbt-idea-lock ...
-[debug] Releasing lock on file C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\project\target\.sbt-compilation-infos\fpga-tetris-compile\.sbt-idea-lock.
+[0m[[0m[0mdebug[0m] [0m[0mAcquiring lock on file /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/project/target/.sbt-compilation-infos/fpga-tetris-compile/.sbt-idea-lock ...[0m
+[0m[[0m[33mwarn[0m] [0m[0m15 feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
+[0m[[0m[0mdebug[0m] [0m[0mReleasing lock on file /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/project/target/.sbt-compilation-infos/fpga-tetris-compile/.sbt-idea-lock.[0m

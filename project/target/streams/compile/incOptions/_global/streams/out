@@ -1,2 +1,2 @@
-[debug] Created transactional ClassFileManager with tempDir = C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\project\target\scala-2.12\sbt-1.0\classes.bak
-[debug] Removing the temporary directory used for backing up class files: C:\Users\Mads Rumle Nordstrom\Desktop\FPGA-Tetris\project\target\scala-2.12\sbt-1.0\classes.bak
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/project/target/scala-2.12/sbt-1.0/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /Users/madsrumlenordstrom/Projekter/FPGA-Tetris/project/target/scala-2.12/sbt-1.0/classes.bak[0m

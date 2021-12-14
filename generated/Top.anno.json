@@ -13,7 +13,7 @@
   {
     "class":"firrtl.annotations.MemoryFileInlineAnnotation",
     "target":"~Top|Top>mem",
-    "filename":"C:/Users/Mads Rumle Nordstrom/Desktop/FPGA-Tetris/generated/MemoryData.txt",
+    "filename":"generated/MemoryData.txt",
     "hexOrBinary":"h"
   }
 ]

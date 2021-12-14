@@ -333,20 +333,20 @@ module Top(
   wire [11:0] mem_memVal_data; // @[Top.scala 29:26]
   wire [10:0] mem_memVal_addr; // @[Top.scala 29:26]
   reg [10:0] mem_memVal_addr_pipe_0;
-  wire  vGACtrl_clock; // @[Top.scala 35:25]
-  wire  vGACtrl_reset; // @[Top.scala 35:25]
-  wire [3:0] vGACtrl_io_Rin; // @[Top.scala 35:25]
-  wire [3:0] vGACtrl_io_Gin; // @[Top.scala 35:25]
-  wire [3:0] vGACtrl_io_Bin; // @[Top.scala 35:25]
-  wire  vGACtrl_io_hSync; // @[Top.scala 35:25]
-  wire  vGACtrl_io_vSync; // @[Top.scala 35:25]
-  wire [3:0] vGACtrl_io_R; // @[Top.scala 35:25]
-  wire [3:0] vGACtrl_io_G; // @[Top.scala 35:25]
-  wire [3:0] vGACtrl_io_B; // @[Top.scala 35:25]
-  wire [9:0] vGACtrl_io_horCntr; // @[Top.scala 35:25]
-  wire [9:0] vGACtrl_io_verCntr; // @[Top.scala 35:25]
-  wire [9:0] memAdrs = vGACtrl_io_horCntr + vGACtrl_io_verCntr; // @[Top.scala 36:38]
-  VGAController vGACtrl ( // @[Top.scala 35:25]
+  wire  vGACtrl_clock; // @[Top.scala 40:25]
+  wire  vGACtrl_reset; // @[Top.scala 40:25]
+  wire [3:0] vGACtrl_io_Rin; // @[Top.scala 40:25]
+  wire [3:0] vGACtrl_io_Gin; // @[Top.scala 40:25]
+  wire [3:0] vGACtrl_io_Bin; // @[Top.scala 40:25]
+  wire  vGACtrl_io_hSync; // @[Top.scala 40:25]
+  wire  vGACtrl_io_vSync; // @[Top.scala 40:25]
+  wire [3:0] vGACtrl_io_R; // @[Top.scala 40:25]
+  wire [3:0] vGACtrl_io_G; // @[Top.scala 40:25]
+  wire [3:0] vGACtrl_io_B; // @[Top.scala 40:25]
+  wire [9:0] vGACtrl_io_horCntr; // @[Top.scala 40:25]
+  wire [9:0] vGACtrl_io_verCntr; // @[Top.scala 40:25]
+  wire [9:0] memAdrs = vGACtrl_io_horCntr + vGACtrl_io_verCntr; // @[Top.scala 41:38]
+  VGAController vGACtrl ( // @[Top.scala 40:25]
     .clock(vGACtrl_clock),
     .reset(vGACtrl_reset),
     .io_Rin(vGACtrl_io_Rin),
@@ -362,16 +362,16 @@ module Top(
   );
   assign mem_memVal_addr = mem_memVal_addr_pipe_0;
   assign mem_memVal_data = mem[mem_memVal_addr]; // @[Top.scala 29:26]
-  assign io_hSync = vGACtrl_io_hSync; // @[Top.scala 48:14]
-  assign io_vSync = vGACtrl_io_vSync; // @[Top.scala 49:14]
-  assign io_R = vGACtrl_io_R; // @[Top.scala 43:10]
-  assign io_G = vGACtrl_io_G; // @[Top.scala 44:10]
-  assign io_B = vGACtrl_io_B; // @[Top.scala 45:10]
+  assign io_hSync = vGACtrl_io_hSync; // @[Top.scala 53:14]
+  assign io_vSync = vGACtrl_io_vSync; // @[Top.scala 54:14]
+  assign io_R = vGACtrl_io_R; // @[Top.scala 48:10]
+  assign io_G = vGACtrl_io_G; // @[Top.scala 49:10]
+  assign io_B = vGACtrl_io_B; // @[Top.scala 50:10]
   assign vGACtrl_clock = clock;
   assign vGACtrl_reset = reset;
-  assign vGACtrl_io_Rin = mem_memVal_data[3:0]; // @[Top.scala 38:29]
-  assign vGACtrl_io_Gin = mem_memVal_data[7:4]; // @[Top.scala 39:29]
-  assign vGACtrl_io_Bin = mem_memVal_data[11:8]; // @[Top.scala 40:29]
+  assign vGACtrl_io_Rin = mem_memVal_data[3:0]; // @[Top.scala 43:29]
+  assign vGACtrl_io_Gin = mem_memVal_data[7:4]; // @[Top.scala 44:29]
+  assign vGACtrl_io_Bin = mem_memVal_data[11:8]; // @[Top.scala 45:29]
   always @(posedge clock) begin
     mem_memVal_addr_pipe_0 <= {{1'd0}, memAdrs};
   end
@@ -419,6 +419,6 @@ end // initial
 `endif
 `endif // SYNTHESIS
   initial begin
-    $readmemh("C:/Users/Mads Rumle Nordstrom/Desktop/FPGA-Tetris/generated/MemoryData.txt", mem);
+    $readmemh("generated/MemoryData.txt", mem);
   end
 endmodule
